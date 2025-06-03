@@ -40,17 +40,21 @@ function initQuiz() {
     
     // Shuffle and select questions (FIXED: Ensure no duplicates)
     const shuffledQuestions = shuffleArray([...allQuestions]);
-    // Create a Set to track unique questions by text to avoid duplicates
+    
+    // Create a more robust uniqueness check for questions
     const uniqueQuestions = [];
-    const seenQuestions = new Set();
+    const seenAnswerSets = new Set(); // Track answer sets to avoid substantively identical questions
     
     // Get unique questions until we have enough or run out
     for (const q of shuffledQuestions) {
         if (uniqueQuestions.length >= totalQuestions) break;
         
-        // Use question text as a unique identifier
-        if (!seenQuestions.has(q.question)) {
-            seenQuestions.add(q.question);
+        // Create a unique signature for this question based on its options + correct answer
+        // This catches reworded questions with the same options and correct answer
+        const answerSignature = [...q.options].sort().join('|') + '::' + q.correctAnswer;
+        
+        if (!seenAnswerSets.has(answerSignature)) {
+            seenAnswerSets.add(answerSignature);
             uniqueQuestions.push(q);
         }
     }

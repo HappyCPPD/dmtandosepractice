@@ -589,45 +589,88 @@ const additionalQuestions = [
     }
 ];
 
-// Massively expanded reworded questions
+// Generate genuinely reworded questions
 const rewordedQuestions = [];
-(function generateRewordedQuestions() {
-    function shuffle(arr) {
-        let a = arr.slice();
-        for (let i = a.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [a[i], a[j]] = [a[j], a[i]];
-        }
-        return a;
-    }
+
+// Patterns for rewording questions
+const questionPatterns = [
+    (topic) => `In digital media, which statement about ${topic} is correct?`,
+    (topic) => `Which of these options accurately describes ${topic}?`,
+    (topic) => `When discussing ${topic}, which of the following is true?`,
+    (topic) => `From the options below, which one correctly identifies ${topic}?`,
+    (topic) => `In the context of digital media, what is the proper definition of ${topic}?`,
+    (topic) => `What is the most accurate statement regarding ${topic}?`,
+    (topic) => `Which option best explains ${topic}?`,
+    (topic) => `Among these choices, which correctly describes ${topic}?`,
+    (topic) => `Digital media professionals would identify ${topic} as:`,
+    (topic) => `According to digital media standards, ${topic} is defined as:`,
+];
+
+// Extract key topics from questions
+function extractTopic(question) {
+    // Remove question marks and common question starters
+    let text = question.replace(/\?/g, '').trim();
+    text = text.replace(/^(which|what|when|how|why|where|can you|select|is|are|does|do)\s+/i, '');
+    text = text.replace(/^(one of the following|of the following|is the|of these)\s+/i, '');
+    
+    // Remove unnecessary words
+    const stopWords = ['a', 'an', 'the', 'in', 'on', 'at', 'to', 'for', 'by', 'with', 'about'];
+    let words = text.split(' ');
+    words = words.filter(word => !stopWords.includes(word.toLowerCase()));
+    
+    // Get first 3-5 significant words as the topic
+    return words.slice(0, Math.min(5, Math.max(3, Math.floor(words.length/2)))).join(' ');
+}
+
+// Generate new questions with different wording
+function generateRewordedQuestions() {
     let count = 0;
-    for (const q of originalQuestions) {
-        // 3 rewordings per question
-        for (let v = 0; v < 3; v++) {
-            if (count >= 160) break;
-            let reworded = { ...q };
-            // Rephrase question
-            let base = q.question;
-            if (v === 0) {
-                reworded.question = `Select the correct statement: ${base}`;
-            } else if (v === 1) {
-                reworded.question = `Which of these is true? ${base}`;
-            } else {
-                reworded.question = `Can you answer: ${base}`;
-            }
-            // Shuffle options
-            reworded.options = shuffle(q.options);
-            // Keep correct answer and explanation
-            rewordedQuestions.push(reworded);
+    const uniqueQuestionTexts = new Set();
+    
+    // Add all original questions to a uniqueness set
+    originalQuestions.forEach(q => uniqueQuestionTexts.add(q.question));
+    additionalQuestions.forEach(q => uniqueQuestionTexts.add(q.question));
+    
+    // Create reworded versions
+    for (const originalQ of originalQuestions) {
+        // Extract the topic from the question
+        const topic = extractTopic(originalQ.question);
+        
+        // Create multiple variations
+        for (const pattern of questionPatterns) {
+            if (count >= 150) break;
+            
+            // Generate new question text
+            const newQuestionText = pattern(topic);
+            
+            // Skip if this exact wording already exists
+            if (uniqueQuestionTexts.has(newQuestionText)) continue;
+            uniqueQuestionTexts.add(newQuestionText);
+            
+            // Create a genuinely new question object
+            const newQuestion = {
+                question: newQuestionText,
+                options: [...originalQ.options].sort(() => Math.random() - 0.5), // Randomize option order
+                correctAnswer: originalQ.correctAnswer,
+                explanation: originalQ.explanation
+            };
+            
+            rewordedQuestions.push(newQuestion);
             count++;
         }
-        if (count >= 160) break;
+        
+        if (count >= 150) break;
     }
-})();
+    
+    console.log(`Generated ${rewordedQuestions.length} reworded questions`);
+}
+
+// Run the generator
+generateRewordedQuestions();
 
 // Combine all questions
 const allQuestions = [
-  ...originalQuestions,
-  ...additionalQuestions,
-  ...rewordedQuestions
+    ...originalQuestions,
+    ...additionalQuestions,
+    ...rewordedQuestions
 ]; 
