@@ -38,8 +38,29 @@ function initQuiz() {
     score = 0;
     userAnswers = [];
     
-    // Shuffle and select questions
-    quizQuestions = shuffleArray([...allQuestions]).slice(0, totalQuestions);
+    // Shuffle and select questions (FIXED: Ensure no duplicates)
+    const shuffledQuestions = shuffleArray([...allQuestions]);
+    // Create a Set to track unique questions by text to avoid duplicates
+    const uniqueQuestions = [];
+    const seenQuestions = new Set();
+    
+    // Get unique questions until we have enough or run out
+    for (const q of shuffledQuestions) {
+        if (uniqueQuestions.length >= totalQuestions) break;
+        
+        // Use question text as a unique identifier
+        if (!seenQuestions.has(q.question)) {
+            seenQuestions.add(q.question);
+            uniqueQuestions.push(q);
+        }
+    }
+    
+    quizQuestions = uniqueQuestions.slice(0, totalQuestions);
+    
+    // If we don't have enough unique questions, fill with random ones
+    if (quizQuestions.length < totalQuestions) {
+        console.log(`Warning: Only found ${quizQuestions.length} unique questions out of ${totalQuestions} requested.`);
+    }
     
     // Update UI
     updateQuestionCounter();
