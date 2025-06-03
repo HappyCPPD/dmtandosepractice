@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Media Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div id="start-screen" class="screen">
+            <h1>Digital Media Quiz</h1>
+            <p>Test your knowledge with 50 randomly selected questions about digital media.</p>
+            <button id="start-btn" class="btn">Start Quiz</button>
+        </div>
+
+        <div id="quiz-screen" class="screen hidden">
+            <div class="quiz-header">
+                <div id="progress-container">
+                    <div id="progress-bar"></div>
+                </div>
+                <div class="quiz-info">
+                    <span id="question-counter">Question 1/50</span>
+                    <span id="score-display">Score: 0/0</span>
+                </div>
+            </div>
+            
+            <div id="question-container">
+                <h2 id="question-text">Question text will appear here</h2>
+                <div id="options-container">
+                    <!-- Options will be inserted here dynamically -->
+                </div>
+            </div>
+            
+            <div id="feedback-container" class="hidden">
+                <div id="feedback-text"></div>
+                <button id="next-btn" class="btn">Next Question</button>
+            </div>
+        </div>
+
+        <div id="results-screen" class="screen hidden">
+            <h1>Quiz Results</h1>
+            <div id="results-info">
+                <p>Your score: <span id="final-score">0/50</span></p>
+                <p>Percentage: <span id="percentage">0%</span></p>
+            </div>
+            <button id="review-btn" class="btn">Review All Questions</button>
+            <button id="restart-btn" class="btn">Restart Quiz</button>
+        </div>
+
+        <div id="review-screen" class="screen hidden">
+            <h1>Quiz Review</h1>
+            <div id="review-controls" class="sticky-controls">
+                <button id="show-all-btn" class="btn small">Show All</button>
+                <button id="show-incorrect-btn" class="btn small">Show Only Incorrect</button>
+            </div>
+            <div id="review-list"></div>
+            <button id="back-to-results-btn" class="btn">Back to Results</button>
+        </div>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+</body>
+</html> 
