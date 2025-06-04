@@ -527,6 +527,72 @@ const originalQuestions = [
         ],
         correctAnswer: "Orange",
         explanation: "On the traditional 12-division color wheel, complementary colors are those directly opposite each other. Blue's complementary color is orange. When placed side by side, complementary colors create maximum contrast and can make each other appear more vibrant. This relationship is often used in art and design to create visual interest and emphasis."
+    },
+    {
+        question: "What color is obtained by mixing equal parts of red and green in the RGB color model?",
+        options: [
+            "Blue",
+            "Yellow",
+            "Cyan",
+            "Magenta"
+        ],
+        correctAnswer: "Yellow",
+        explanation: "In the RGB additive color model, mixing equal parts of red and green light creates yellow. This is different from the subtractive color mixing used in physical paints where red and green would create a brown color."
+    },
+    {
+        question: "What is the primary purpose of the Pantone Color System?",
+        options: [
+            "To categorize colors for digital displays",
+            "To standardize color reproduction in printing",
+            "To provide guidelines for color mixing in painting",
+            "To establish color codes for web design"
+        ],
+        correctAnswer: "To standardize color reproduction in printing",
+        explanation: "The Pantone Color System is primarily used to standardize colors in the printing industry. It ensures consistent color reproduction across different printers, materials, and locations by providing a universal color language and matching system."
+    },
+    {
+        question: "What is the primary advantage of using the MP3 audio format?",
+        options: [
+            "Lossless audio quality",
+            "Small file size",
+            "Support for multi-channel audio",
+            "Compatibility with all media players"
+        ],
+        correctAnswer: "Small file size",
+        explanation: "The primary advantage of MP3 is its small file size achieved through lossy compression. This makes it ideal for storing and transferring audio files with reasonable quality while using significantly less storage space compared to uncompressed formats."
+    },
+    {
+        question: "What does a video container file do?",
+        options: [
+            "Compress audio only",
+            "Store audio and video data",
+            "Convert file types",
+            "Encode video frames"
+        ],
+        correctAnswer: "Store audio and video data",
+        explanation: "A video container file (like MP4, AVI, or MKV) serves as a wrapper that holds audio tracks, video tracks, subtitles, and metadata. It doesn't handle compression itself but organizes these different elements into a single file."
+    },
+    {
+        question: "Which is a common video codec?",
+        options: [
+            "H.264",
+            "WAV",
+            "AIFF",
+            "PNG"
+        ],
+        correctAnswer: "H.264",
+        explanation: "H.264 (also known as AVC) is a widely used video compression codec. WAV and AIFF are audio file formats, while PNG is an image format. H.264 is popular for its efficient compression and good quality, used in streaming services and many digital video applications."
+    },
+    {
+        question: "How many descenders are there in the words \"Avengers Infinity War\"?",
+        options: [
+            "0",
+            "1",
+            "2",
+            "3"
+        ],
+        correctAnswer: "2",
+        explanation: "There are 2 descenders in \"Avengers Infinity War\". Descenders are parts of letters that extend below the baseline, such as in g, j, p, q, and y. In this phrase, the letters 'g' in 'Avengers' and 'y' in 'Infinity' are the two descenders."
     }
 ];
 
@@ -1455,6 +1521,171 @@ const additionalQuestions = [
         ],
         correctAnswer: "To capture light beyond the visible spectrum",
         explanation: "Infrared photography captures light beyond the visible spectrum. This technique creates unique, ethereal images by recording infrared light that's invisible to the human eye, often requiring special equipment or filters."
+    },
+    {
+        question: "Which color is created by mixing equal parts of red, green, and blue in the RGB color model?",
+        options: [
+            "White",
+            "Black",
+            "Gray",
+            "Brown"
+        ],
+        correctAnswer: "White",
+        explanation: "In the RGB color model, mixing equal parts of red, green, and blue at full intensity produces white. This is the basis of additive color mixing used in digital displays."
+    },
+    {
+        question: "What does the term \"Tint\" refer to in color theory?",
+        options: [
+            "A color mixed with black",
+            "A color mixed with white",
+            "A color mixed with gray",
+            "A color mixed with its complementary color"
+        ],
+        correctAnswer: "A color mixed with white",
+        explanation: "A tint is created when a color is mixed with white, making it lighter. This is a fundamental concept in color theory for creating lighter variations of a hue."
+    },
+    {
+        question: "What does the term \"Shade\" refer to in color theory?",
+        options: [
+            "A color mixed with black",
+            "A color mixed with white",
+            "A color mixed with gray",
+            "A color mixed with its complementary color"
+        ],
+        correctAnswer: "A color mixed with black",
+        explanation: "A shade is created when a color is mixed with black, making it darker. This is a basic method for creating deeper, richer versions of a hue."
+    },
+    {
+        question: "What does the term \"Tone\" refer to in color theory?",
+        options: [
+            "A color mixed with black",
+            "A color mixed with white",
+            "A color mixed with gray",
+            "A color mixed with its complementary color"
+        ],
+        correctAnswer: "A color mixed with gray",
+        explanation: "A tone is created when a color is mixed with gray (a combination of black and white), resulting in a more muted version of the original color."
+    },
+    {
+        question: "Which audio file format is commonly used for streaming music over the internet?",
+        options: [
+            "WAV",
+            "AIFF",
+            "OGG",
+            "AAC"
+        ],
+        correctAnswer: "AAC",
+        explanation: "AAC (Advanced Audio Codec) is widely used for streaming music online due to its efficient compression and good audio quality at lower bitrates."
+    },
+    {
+        question: "What does AAC stand for in the context of audio file formats?",
+        options: [
+            "Advanced Audio Codec",
+            "Audio Archival Compression",
+            "Apple Audio Converter",
+            "Adaptive Audio Compression"
+        ],
+        correctAnswer: "Advanced Audio Codec",
+        explanation: "AAC stands for Advanced Audio Codec, a standard audio format for lossy digital audio compression."
+    },
+    {
+        question: "What is the primary advantage of using the FLAC audio format?",
+        options: [
+            "Lossless audio quality",
+            "Small file size",
+            "Compatibility with all media players",
+            "Support for multi-channel audio"
+        ],
+        correctAnswer: "Lossless audio quality",
+        explanation: "FLAC (Free Lossless Audio Codec) provides lossless compression, meaning audio is compressed without any loss in quality, making it ideal for audiophiles and archiving."
+    },
+    {
+        question: "What does AVI stand for in the context of video file formats?",
+        options: [
+            "Audio Video Interchange",
+            "Advanced Video Integration",
+            "Audio Visual Interleaved",
+            "Audio Video Interleave"
+        ],
+        correctAnswer: "Audio Video Interleave",
+        explanation: "AVI stands for Audio Video Interleave, a multimedia container format introduced by Microsoft that can contain both audio and video data."
+    },
+    {
+        question: "What is the main advantage of using the MKV video format?",
+        options: [
+            "High compression ratio",
+            "Support for multiple audio and subtitle tracks",
+            "Lossless audio quality",
+            "Compatibility with older media players"
+        ],
+        correctAnswer: "Support for multiple audio and subtitle tracks",
+        explanation: "MKV (Matroska Video) is popular for its ability to store multiple audio and subtitle tracks in a single file, making it ideal for movies and TV shows with multiple languages."
+    },
+    {
+        question: "What is the primary advantage of using the OGG audio format?",
+        options: [
+            "Lossless audio quality",
+            "Small file size",
+            "Compatibility with all media players",
+            "Open-source and royalty-free"
+        ],
+        correctAnswer: "Open-source and royalty-free",
+        explanation: "OGG is an open-source, royalty-free audio format, making it attractive for developers and users who want to avoid licensing fees."
+    },
+    {
+        question: "The MP4 file format commonly uses which audio compression?",
+        options: [
+            "FLAC",
+            "WAV",
+            "ALAC",
+            "AAC"
+        ],
+        correctAnswer: "AAC",
+        explanation: "MP4 files most commonly use AAC (Advanced Audio Codec) for audio compression, balancing quality and file size for streaming and storage."
+    },
+    {
+        question: "JPEG is best suited for:",
+        options: [
+            "Line art",
+            "Icons",
+            "Photographs",
+            "Vector illustrations"
+        ],
+        correctAnswer: "Photographs",
+        explanation: "JPEG is optimized for compressing photographic images with smooth gradients and many colors, making it less suitable for line art or images with sharp edges."
+    },
+    {
+        question: "A major limitation of the GIF format is:",
+        options: [
+            "No support for web use",
+            "Limited to 256 colors",
+            "Too large for email",
+            "Cannot animate"
+        ],
+        correctAnswer: "Limited to 256 colors",
+        explanation: "GIF images are limited to a palette of 256 colors per frame, which restricts their use for high-quality photographs or images with many colors."
+    },
+    {
+        question: "OpenType fonts are an extension of:",
+        options: [
+            "Bitmap fonts",
+            "TrueType fonts",
+            "SVG fonts",
+            "Flash fonts"
+        ],
+        correctAnswer: "TrueType fonts",
+        explanation: "OpenType fonts are an extension of the TrueType font format, adding support for advanced typographic features and broader character sets."
+    },
+    {
+        question: "Creative Commons licenses allow:",
+        options: [
+            "Total copyright",
+            "Free use with specified conditions",
+            "Patent protection",
+            "Unlimited commercial use without credit"
+        ],
+        correctAnswer: "Free use with specified conditions",
+        explanation: "Creative Commons licenses allow creators to specify the conditions under which their work can be used, often permitting free use as long as certain requirements are met."
     }
 ];
 

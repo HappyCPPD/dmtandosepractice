@@ -5,13 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Media Quiz</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <div class="theme-toggle">
+        <button id="theme-toggle-btn" class="icon-btn">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
     <div class="container">
         <div id="start-screen" class="screen">
             <h1>Digital Media Quiz</h1>
-            <p>Test your knowledge with 50 randomly selected questions about digital media.</p>
+            
+            <div class="settings-container">
+                <div class="setting">
+                    <label for="difficulty">Difficulty:</label>
+                    <select id="difficulty" class="select-css">
+                        <option value="all">All Questions</option>
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
+                
+                <div class="setting">
+                    <label for="num-questions">Number of Questions:</label>
+                    <select id="num-questions" class="select-css">
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50" selected>50</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+            </div>
+            
             <button id="start-btn" class="btn">Start Quiz</button>
+            <button id="resume-btn" class="btn hidden">Resume Last Quiz</button>
         </div>
 
         <div id="quiz-screen" class="screen hidden">
@@ -21,6 +51,7 @@
                 </div>
                 <div class="quiz-info">
                     <span id="question-counter">Question 1/50</span>
+                    <span id="timer">00:00</span>
                     <span id="score-display">Score: 0/0</span>
                 </div>
             </div>
@@ -36,6 +67,13 @@
                 <div id="feedback-text"></div>
                 <button id="next-btn" class="btn">Next Question</button>
             </div>
+            
+            <div class="keyboard-shortcuts">
+                <div class="shortcut-info">
+                    <span><kbd>1-4</kbd> Select answer</span>
+                    <span><kbd>Space/Enter</kbd> Next question</span>
+                </div>
+            </div>
         </div>
 
         <div id="results-screen" class="screen hidden">
@@ -43,9 +81,12 @@
             <div id="results-info">
                 <p>Your score: <span id="final-score">0/50</span></p>
                 <p>Percentage: <span id="percentage">0%</span></p>
+                <p>Time taken: <span id="time-taken">00:00</span></p>
             </div>
-            <button id="review-btn" class="btn">Review All Questions</button>
-            <button id="restart-btn" class="btn">Restart Quiz</button>
+            <div class="results-buttons">
+                <button id="review-btn" class="btn">Review All Questions</button>
+                <button id="restart-btn" class="btn">Restart Quiz</button>
+            </div>
         </div>
 
         <div id="review-screen" class="screen hidden">
@@ -53,6 +94,8 @@
             <div id="review-controls" class="sticky-controls">
                 <button id="show-all-btn" class="btn small">Show All</button>
                 <button id="show-incorrect-btn" class="btn small">Show Only Incorrect</button>
+                <button id="show-correct-btn" class="btn small">Show Only Correct</button>
+                <input type="text" id="search-review" placeholder="Search questions..." class="search-input">
             </div>
             <div id="review-list"></div>
             <button id="back-to-results-btn" class="btn">Back to Results</button>
